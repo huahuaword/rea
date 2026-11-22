@@ -30,12 +30,12 @@ export REA_JADX_MCP_JAR=<jadx-headless-mcp.jar 的绝对路径>
 
 ## 三、APK / Android 线
 
-| 软件                  | 作用                         | 版本要求                                                                                        | 官方地址                                   | 国内镜像                                                                                                                                                                                          |
-| --------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| jadx-headless-mcp     | REA 调 JADX 的桥（单个 jar） | 实测 0.7.1，约 41 MB；`rea doctor` 的 JADX 检查会给出该版本的官方下载地址与 SHA-256，照它下即可 | 见 doctor 输出                             | 无官方镜像：加速下载 + 按 doctor 给的哈希验                                                                                                                                                       |
-| apktool               | APK 资源与 smali 拆包        | 最新正式版即可                                                                                  | apktool.org（指向 GitHub Releases）        | 同上                                                                                                                                                                                              |
-| platform-tools（adb） | 连真机与模拟器               | 最新版即可                                                                                      | developer.android.com 的 platform-tools 页 | 腾讯云 AndroidSDK 镜像 `https://mirrors.cloud.tencent.com/AndroidSDK/`，搜 `platform-tools_r` 开头的最新 zip 直下                                                                                 |
-| frida-tools           | 动态插桩（frida 线工具）     | 与真机 frida-server 版本必须完全一致                                                            | pip 安装                                   | 先设清华 PyPI 源：`pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple`，再 `pip install frida-tools`。frida-server 本体去 frida 官网 GitHub Releases 下对应架构版，放进真机 |
+| 软件                  | 作用                         | 版本要求                                                                                        | 官方地址                                                  | 国内镜像                                                                                                                                                                                          |
+| --------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| jadx-headless-mcp     | REA 调 JADX 的桥（单个 jar） | 实测 0.7.1，约 41 MB；`rea doctor` 的 JADX 检查会给出该版本的官方下载地址与 SHA-256，照它下即可 | 见 doctor 输出                                            | 无官方镜像：加速下载 + 按 doctor 给的哈希验                                                                                                                                                       |
+| apktool               | APK 资源与 smali 拆包        | 2.7.0 以上；REA 从 PATH 找，或用环境变量 `REA_APKTOOL_COMMAND` 指定启动器路径                   | apktool.org（指向 GitHub `iBotPeaches/Apktool` Releases） | 同上                                                                                                                                                                                              |
+| platform-tools（adb） | 连真机与模拟器               | 最新版即可                                                                                      | developer.android.com 的 platform-tools 页                | 腾讯云 AndroidSDK 镜像 `https://mirrors.cloud.tencent.com/AndroidSDK/`，搜 `platform-tools_r` 开头的最新 zip 直下                                                                                 |
+| frida-tools           | 动态插桩（frida 线工具）     | 与真机 frida-server 版本必须完全一致                                                            | pip 安装                                                  | 先设清华 PyPI 源：`pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple`，再 `pip install frida-tools`。frida-server 本体去 frida 官网 GitHub Releases 下对应架构版，放进真机 |
 
 ## 四、抓包线
 
@@ -51,6 +51,17 @@ export REA_JADX_MCP_JAR=<jadx-headless-mcp.jar 的绝对路径>
 | Hopper  | 商业授权，REA 的 setup 经你批准后可以代装。官网 hopperapp.com |
 | Kuna    | 另一个原生分析提供方，按官方文档配置                          |
 | JEB     | 商业 Android 反编译器，REA 有对应分析通道，按需再看           |
+
+## 六、进阶/小众线（按需，没用到不用装）
+
+| 软件       | 作用                             | 说明                                                      |
+| ---------- | -------------------------------- | --------------------------------------------------------- |
+| sigrok-cli | 信号记录分析线                   | REA 适配的版本是 0.7.2；官网 sigrok.org，或系统包管理器装 |
+| Cutter     | 带界面的原生分析前端（rizin 系） | 官网 cutter.re 的 Releases；REA 通过桥接调用它            |
+| gdb        | 调试线（配合 pwndbg 等桥接）     | 系统包管理器装即可                                        |
+
+另有一类组件由 REA 自己托管下载并锁定版本（例如 WABT），doctor 不报缺、不用你装，
+缺的只有上面这些要你自备的。
 
 ## 装完怎么验
 
