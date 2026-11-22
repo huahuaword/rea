@@ -754,7 +754,7 @@ const configurationCheck = (
       passed: installDir !== null,
       code: "not_configured",
       detail: installDir ?? "GHIDRA_INSTALL_DIR is not set",
-      remediation: `Set GHIDRA_INSTALL_DIR to an extracted Ghidra ${ghidraReleaseLine()} release directory.`,
+      remediation: `Set GHIDRA_INSTALL_DIR to an extracted Ghidra ${ghidraReleaseLine()} release directory from the official releases at https://github.com/NationalSecurityAgency/ghidra/releases. REA does not download or install Ghidra.`,
     });
   const settings = relative.join(" and ");
   return installationCheck({
@@ -1100,7 +1100,7 @@ const javaRemediation = (
   if (requirement.unresolved !== null)
     return `The Ghidra installation's Java bounds could not be read (${requirement.unresolved}). Install a 64-bit full JDK inside the declared application.java.min and application.java.max.`;
   return configuredHome === undefined
-    ? `Select ${range} on PATH, or set JAVA_HOME to its installation root before starting REA.${platform === "darwin" ? " Homebrew OpenJDK can be keg-only: set JAVA_HOME to the selected formula's libexec/openjdk.jdk/Contents/Home (for example /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home or /usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home). The installed JDK must satisfy the declared Ghidra Java bounds." : ""}`
+    ? `Select ${range} on PATH, or set JAVA_HOME to its installation root before starting REA.${platform === "darwin" ? " Homebrew OpenJDK can be keg-only: set JAVA_HOME to the selected formula's libexec/openjdk.jdk/Contents/Home (for example /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home or /usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home). The installed JDK must satisfy the declared Ghidra Java bounds." : ""} One official JDK source is Eclipse Temurin at https://adoptium.net.`
     : `Update JAVA_HOME to the root of ${range} installation.`;
 };
 
