@@ -6,6 +6,7 @@ The [REA website](https://rea.tools/) has worked examples and product pages.
 ## Getting started
 
 - [Installation and setup](getting-started/installation.md)
+- [Required software downloads (中文)](required-software.zh-CN.md)
 - [Client configuration and troubleshooting](getting-started/client-configuration.md)
 - [CLI and Evidence](getting-started/cli.md)
 - [Guided MCP prompts and completion](getting-started/mcp-prompts.md)
