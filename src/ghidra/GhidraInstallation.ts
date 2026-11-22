@@ -708,7 +708,7 @@ const installationChecks = ({
       coordinates.applicationPropertiesPath ??
       "Ghidra application properties unavailable",
     remediation:
-      "Point GHIDRA_INSTALL_DIR at the root of an extracted official Ghidra release.",
+      "Point GHIDRA_INSTALL_DIR at the root of an extracted official Ghidra release from https://github.com/NationalSecurityAgency/ghidra/releases.",
   }),
   versionCheck(coordinates.properties),
   installationCheck({
@@ -1098,10 +1098,10 @@ const javaRemediation = (
   platform: NodeJS.Platform,
 ): string => {
   if (requirement.unresolved !== null)
-    return `The Ghidra installation's Java bounds could not be read (${requirement.unresolved}). Install a 64-bit full JDK inside the declared application.java.min and application.java.max.`;
+    return `The Ghidra installation's Java bounds could not be read (${requirement.unresolved}). Install a 64-bit full JDK inside the declared application.java.min and application.java.max. One official JDK source is Eclipse Temurin at https://adoptium.net.`;
   return configuredHome === undefined
     ? `Select ${range} on PATH, or set JAVA_HOME to its installation root before starting REA.${platform === "darwin" ? " Homebrew OpenJDK can be keg-only: set JAVA_HOME to the selected formula's libexec/openjdk.jdk/Contents/Home (for example /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home or /usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home). The installed JDK must satisfy the declared Ghidra Java bounds." : ""} One official JDK source is Eclipse Temurin at https://adoptium.net.`
-    : `Update JAVA_HOME to the root of ${range} installation.`;
+    : `Update JAVA_HOME to the root of ${range} installation. One official JDK source is Eclipse Temurin at https://adoptium.net.`;
 };
 
 export const systemGhidraInstallationHost = (): GhidraInstallationHost => ({
